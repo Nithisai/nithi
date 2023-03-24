@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+        function validate()
+        {
+            var a = document.form.name.value;
+            if(a=="")
+            {
+                alert("please, Enter your name!!!");
+                document.form.name.focus();
+                return false;
+            }
+            if(!isNaN(a))
+            {
+                alert("please Enter only characters");
+                document.form.name.select();
+                return false;
+            }
+
+            var d = document.form.mail.value;
+            if(d == "")
+            {
+                alert("please, Enter your mail id!!!");
+                document.form.mail.focus();
+                return false;
+            }
+            var atposition = d.indexOf("@");
+            var dotposition = d.lastIndexOf(".");
+            if(atposition<1 || dotposition<atposition+2 || dotposition+2>=d.length)
+                {
+                    alert("please enter valid mail address!!!!");
+                return false;                }
+
+            var p = document.form.pass.value;
+            if(p == "")
+            {
+                alert("please, Enter your password!!!");
+                document.form.pass.focus();
+                return false;
+            }
+            var cp = document.form.cpass.value;
+            if(cp == "")
+            {
+                alert("please, Enter your password!!!");
+                document.form.cpass.focus();
+                return false;
+            }
+            if(p != cp)
+            {
+                alert("Password not matched please enter correct one!!!!");
+                document.form.cpass.focus();
+                return false;
+            }
+
+            var m = document.form.mno.value;
+            if(m =="")
+            {
+                alert("please, Enter your moblie number!!!");
+                document.form.mno.focus();
+                return false;
+            }
+            else if(m.length<10 || m.length>10)
+                {
+                    alert("please enter only 10 digits!");
+                    document.form.mno.focus();
+                    return false;
+                }
+
+            var rb = document.form.gender;
+            var status =0;
+            for(var i=0;i<rb.length;i++)
+            {
+                if(rb[i].checked==true){
+                    status=1;
+                }
+            }
+            if(status==0)
+            {
+                alert("select gender");
+                return false;
+            }
+
+            var interest = document.form.course;
+            if(interest.selectedIndex==0)
+            {
+                alert("select your course");
+                document.form.course.focus();
+                return false;
+            }
+
+           
+            return true;
+        }
+    </script>
+<style type="text/css">
+    .form-style-9{
+        max-width: 450px;
+        background: #FAFAFA;
+        padding: 30px;
+        margin: 50px auto;
+        box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+        border-radius: 10px;
+        border: 6px solid #305A72;
+    }
+    .form-style-9 ul{
+        padding:0;
+        margin:0;
+        list-style:none;
+    }
+    .form-style-9 ul li{
+        display: block;
+        margin-bottom: 10px;
+        min-height: 35px;
+    }
+    </style>
+    </head>
+<body>
+    <form class="form-style-9" onsubmit="return validate()" name="form" action="submit.html">
+        <ul>
+        <li>
+            <label for="Username">Username:</label>
+            <input type="text" id="name" name="field1" class="field-style field-split align-left" placeholder="Name" />
+        </li>
+        <li>
+            <label for="Mailid">Mail-ID:</label>
+            <input type="email" id="mail" name="field2" class="field-style field-split align-left" placeholder="Email" />
+        </li>
+        <li>
+            <label for="password">Password:</label>
+            <input type="text" id="pw" name="pass" class="field-style field-split align-left" placeholder="Password" />
+        </li>
+        <li>
+            <label for="cpassword">Confirm Password:</label>
+            <input type="text" id="cpw" name="cpass"class="field-style field-split align-left" placeholder="Confirm Password">
+        </li>
+        <li>
+            <label for="mno">Mobile number:</label>
+            <input type="text" id="mno" name="field3" class="field-style field-split align-left" placeholder="Phone" />
+        </li>
+        <li>
+            <label for="gender">Gender:</label> <br>
+            <input type="radio" id="gender" name="gender">
+            <label for="male">Male</label> <br>
+            <input type="radio" id="gender" name="gender">
+            <label for="female">Female</label> <br>
+            <input type="radio" id="gender" name="gender">
+            <label for="others">Others</label> <br>
+        </li>
+        <li>
+            <label for="course">Select course:</label> <br>
+            <select type="text" name="course" id="course"> 
+                <option></option>
+                <option value="WEB TECHNOLOGY">WEB TECHNOLOGY</option>
+                <option value="Operating system">Operating system</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Optimization Techniques">Optimization Techniques</option>
+                <option value="Computer Organisation">Computer Organisation</option>
+            </select>
+        </li>
+        <li>
+            <input type="submit" id="sub" name="sub" value="sumbit">
+        </li>
+    </ul>
+    </form>
+</body>
+</html>
+
